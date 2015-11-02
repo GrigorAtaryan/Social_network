@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    font-weight: bolder;
+    font-family: 'Lato';
+}
+
+.container {
+    border: 1px solid dodgerblue;
+    text-align: center;
+
+}
+
+.content {
+    border:1px dashed #1b6d85;
+    text-align: center;
+    padding:5px;
+    border-top-color: transparent;
+    display: inline-block;
+}
+
+.title {
+    font-size: 50px;
+    font-family: 'Lato';
+    text-align: center;
+
+    text-transform: uppercase;
+    text-shadow: #2c2c2c 3px 3px 10px;
+}
+.title_profile {
+    font-size: 25px;
+    width:300px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+.span{
+
+    font-family: 'Lato';
+    letter-spacing: 1px;
+    font-size: 25px;
+}
+a{
+
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    padding:10px;
+    font-wight:bold;
+    color:blue;
+    font-size: 20px;
+}
+#middle{
+    width:100%;
+    margin:0px auto;
+    border:1px dashed;
+    border-top-color:transparent;
+    border-left-color:transparent;
+    border-right-color:transparent;
+    border-bottom-color:#1b6d85;
+
+}
+#div_all_users{
+      float:right;
+      border:1px dashed #1b6d85;
+      border-top-color:transparent;
+    width:400px;
+  }
+#div_profile{
+    float:left;
+    border:1px dashed #1b6d85;
+    border-top-color:transparent;
+}
+
+#div_friends{
+    border:1px solid;
+    width:400px;
+
+}
+#div_msg{
+    border:1px dashed #1b6d85;
+    width:300px;
+    border-top-color:transparent;
+    display: none;
+    margin:0px auto;
+    height:200px;
+}
