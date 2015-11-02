@@ -11,9 +11,10 @@ class MessageController extends Controller
 
     public function write()
     {
-        $message = new Message();     
+        $message = new Message();
         $message_text = $_POST['msg_text'];
-        $message->insert_message($message_text);
+        $from_id = $_POST['id'];
+        $message->insert_message($from_id, $message_text);
     }
 
 
