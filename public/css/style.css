@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    border: 1px solid dodgerblue;
+    border: 0px solid dodgerblue;
     text-align: center;
 
 }
@@ -74,8 +74,12 @@ a{
 }
 
 #div_friends{
-    border:1px solid;
-    width:400px;
+    border:1px dashed;
+    width:399px;
+    border-top-color:#1b6d85;
+    border-left-color:transparent;
+    border-right-color:transparent;
+    border-bottom-color:transparent;
 
 }
 #div_msg{
@@ -85,4 +89,43 @@ a{
     display: none;
     margin:0px auto;
     height:200px;
+}
+.zoom{
+    width:80px;
+    height:80px;
+    -webkit-transition: 1s ease ;
+    -moz-transition: 1s ease ;
+    -ms-transition: 1s ease ;
+    -o-transition: 1s ease ;
+    transition: 1s ease ;
+
+}
+.zoom:hover{
+    width:200px;
+    height:200px;
+position: absolute;
+
+}
+#history{
+    width:300px;
+    height:200px;
+    border: 1px solid;
+}
+
+.from_msg{
+
+
+    background-color: #1f6377;
+    padding: 5px;
+    border-radius:3px;
+    float:left;
+}
+
+.to_msg{
+
+
+    background-color: lightseagreen;
+    padding: 5px;
+    border-radius:3px;
+    float:right;
 }

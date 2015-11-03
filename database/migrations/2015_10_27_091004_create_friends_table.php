@@ -18,15 +18,10 @@ class CreateFriendsTable extends Migration
             $table->integer('friend_id');
             $table->string('approve')->default(0);
             $table->timestamps();
-            $table->string('approve')->default(1);
+            $table->string('is_approve')->default(1);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::drop('friends');

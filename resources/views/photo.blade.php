@@ -16,7 +16,7 @@
     <table style="border:0px solid; width:400px; margin:0px auto"  class="table">
     @foreach($user_images as $user_img)
         <tr>
-            <td><img  width="80" height="80" src="images/<?php echo $user_img->path ?> " class="img-rounded"/></td>
+            <td><img  src="images/<?php echo $user_img->path ?> " class="img-rounded zoom"/></td>
             <td>Set Feature</td>
             <td><input type="radio"  name="feature" class="is_feature" value="<?php echo $user_img->id ?>"></td>
             <td><a href="{{url('delete_photo/' . $user_img->id )}}"><img width="30" height="25"src="images/delete.png"></a></td>

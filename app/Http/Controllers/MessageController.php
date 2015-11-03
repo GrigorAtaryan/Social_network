@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Message;
+use Illuminate\Support\Facades\Auth;
 use Input;
 
 
@@ -16,56 +17,45 @@ class MessageController extends Controller
         $message = new Message();
         $message_text = $_POST['msg_text'];
         $to_id = $_POST['id'];
-        var_dump($message_text);
-        $message->insert_message($to_id, $message_text);
+
+        $message->insert_messages($to_id, $message_text);
     }
 
 
-    public function show()
+    public function show_messages()
     {
-        //
-    }
+        $message = new Message();
+        $to_id = $_POST['id'];
+        $msg = $message->show_messages($to_id);
+        return $msg;
 
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /*
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    }
+//
+//    public function update_messages()
+//    {
+//        $from_id = Auth::User()->id;
+//
+//        $message = new Message();
+//        $new_msg = $message->get_new_messages($from_id);
+//        var_dump($new_msg);die;
+//        $arr = array();
+//        foreach ($new_msg as $new_messages) {
+//            $arr['from_id'] = $new_messages['to_id'];
+//        }
+//
+//
+//        echo json_encode(array('new_msg' => $arr));
+//    }
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

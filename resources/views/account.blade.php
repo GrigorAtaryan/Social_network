@@ -60,7 +60,7 @@
                     <tr>
                         <td><span class="span"> <?php echo $friends->firstname ?></span></td>
                         <td><span class="span"> <?php echo $friends->lastname ?></span></td>
-                        <td><img class='message' id="<?php echo $friends->id ?>" width="30" height="30" src="images/msg.png"/></td>
+                        <td><span class="new_msg_<?php echo $friends->id ?>" style="display: none;">+1</span><img class='message' id="<?php echo $friends->id ?>" width="30" height="30" src="images/msg.png"/></td>
                     </tr>
                 @endforeach
             </table>
@@ -69,6 +69,6 @@
     </div>
 </div>
 <div id="div_msg">
-
+    <input  id='from_id' type='hidden' value='{{ Auth::User()->id }}' />
 </div>
 @include('footer');

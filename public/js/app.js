@@ -13,22 +13,24 @@ $(document).on("click", ".friend_request", function(e){
 
 });
 
+
+
 $(document).ready(function(){
-    var url_show_msg = "/showMessages";
-
-    var html = "<div  id='history'></div>";
-
     // Show Messages
+
+    var url_show_msg = "/show_messages";
     $('.message').on('click', function(){
         $.ajax({
             url: url_show_msg,
             type: "POST",
             data: {id: this.id},
-            success: function(){
-                console.log();
+            success: function(out){
+
+                message_view(out);
+
             }
         })
-
+        var html = "<div  id='history'></div>";
         html += "<input type='text' id='text' placeholder='New message' />";
         html += "<input  id='hidden' type='hidden' value='"+this.id+"'/>";
         html += "<br />";
@@ -38,8 +40,9 @@ $(document).ready(function(){
         $('#div_msg').append(html).show('fast');
         $('#close').click(function(e){
             e.preventDefault();
-            var html = '';
-            $('#div_msg').html(html);
+
+            $('#div_msg').hide('fast');
+            window.location.reload()
 
 
         })
@@ -63,6 +66,25 @@ $(document).ready(function(){
 
 
     });
+
+
+
+    function message_view(message){
+        console.log(message);
+        var from_id = $('#from_id').val();
+        $.each(message, function(index, value){
+            var xclass = '';
+            if(from_id == value.from_id){
+                xclass ='from_msg';
+
+            } else{
+                xclass = 'to_msg';
+
+            }
+            var msg = "<span class=" + xclass + ">" + value.message_text + "</span>";
+            $('#history').append(msg).append("<br /> <br />");
+        });
+    }
 
 
 })

@@ -13,6 +13,7 @@ class CreateMessagesTable extends Migration
             $table->string('from_id');
             $table->string('to_id');
             $table->longText('message_text');
+            $table->string('is_read')->default(0);
             $table->timestamps();
         });
     }
