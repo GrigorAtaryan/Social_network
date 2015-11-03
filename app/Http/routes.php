@@ -15,7 +15,7 @@ Route::get('photo', 'ImageController@index');
 
 Route::post('add_friend_request', 'FriendController@create');
 
-Route::post('write_message', 'MessageController@write');
+Route::post('write_message', 'MessageController@create_message');
 
 Route::post('showMessages', 'MessageController@show');
 

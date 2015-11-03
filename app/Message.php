@@ -16,8 +16,8 @@ class Message extends Model
     protected $table = 'messages';
     protected $fillable = ['from_id', 'to_id', 'message_text'];
 
-    public function insert_message($message_text){
-        \DB::table($this->table)->insert('');
+    public function insert_message($to_id, $message_text){
+        \DB::table($this->table)->insert(array('from_id' => Auth::User()->id, 'to_id' => $to_id, 'message_text' => $message_text));
     }
 
 }

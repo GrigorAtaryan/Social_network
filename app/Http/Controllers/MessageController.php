@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Message;
+use Input;
+
 
 class MessageController extends Controller
 {
 
-    public function write()
+    public function create_message()
     {
         $message = new Message();
         $message_text = $_POST['msg_text'];
-        $from_id = $_POST['id'];
-        $message->insert_message($from_id, $message_text);
+        $to_id = $_POST['id'];
+        var_dump($message_text);
+        $message->insert_message($to_id, $message_text);
     }
 
 
