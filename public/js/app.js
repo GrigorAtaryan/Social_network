@@ -1,4 +1,4 @@
-
+// friend request
 $(document).on("click", ".friend_request", function(e){
     var friendId = e.target.id;
     var url ="/add_friend_request";
@@ -14,12 +14,30 @@ $(document).on("click", ".friend_request", function(e){
 });
 
 
-
+//  friend messages
 $(document).ready(function(){
-    // Show Messages
+    function update_msg_status(){
 
-    var url_show_msg = "/show_messages";
+        var friend_id = $('.message').attr('id');
+        var user_id = $('#user_id').val();
+        $.ajax({
+            type: "POST",
+            url: '<?php echo URL ?>user/update_messages',
+            data: {friends_id: friend_id},
+            dataType: "json",
+            success:function(out){
+                $.each(out, function(index, from_user_id){
+                    $(".new_msg_"+from_user_id.from_id).show();
+                });
+            }
+        });
+
+    }
+
+
+    // Show Messages
     $('.message').on('click', function(){
+        var url_show_msg = "/show_messages";
         $.ajax({
             url: url_show_msg,
             type: "POST",
@@ -30,17 +48,16 @@ $(document).ready(function(){
 
             }
         })
-        var html = "<div  id='history'></div>";
-        html += "<input type='text' id='text' placeholder='New message' />";
-        html += "<input  id='hidden' type='hidden' value='"+this.id+"'/>";
-        html += "<br />";
+        var html = "<a id='close' href='#'>X</a><div  id='history'></div>";
+        html += "<br /><br /><input type='text' id='text' placeholder='New message' />";
+        html += "<input  id='hidden' type='hidden' value='"+this.id+"'/> &nbsp ";
+        html += "<input type='file'  name='msg_file' />&nbsp ";
         html += "<input type='submit' value='Send' id='send' class='btn btn-primary'/>";
-        html += "<a id='close' href='#'>Close</a>";
+
 
         $('#div_msg').append(html).show('fast');
         $('#close').click(function(e){
             e.preventDefault();
-
             $('#div_msg').hide('fast');
             window.location.reload()
 
@@ -48,6 +65,7 @@ $(document).ready(function(){
         })
     });
 
+    // Write Messages
     $('body').delegate('#send', 'click', function(){
 
         var friend_id =  $("#hidden").val();
@@ -60,15 +78,14 @@ $(document).ready(function(){
             data: {id: friend_id, msg_text: text},
             dataType: "json",
             success:function(){
-                window.location.reload()
+                window.location.reload();
             }
         });
 
 
     });
 
-
-
+    // View Messages
     function message_view(message){
         console.log(message);
         var from_id = $('#from_id').val();

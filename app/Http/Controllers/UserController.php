@@ -162,7 +162,7 @@ class UserController extends Controller
         else{
             $user = new User();
             $user->update_settings($data);
-
+            return redirect::to('account');
         }
 
     }

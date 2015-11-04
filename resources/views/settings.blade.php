@@ -1,5 +1,5 @@
 @include('header')
-    <div style="border:1px solid; width:800px; margin:0px auto; padding-top:20px">
+    <div id="div_settings">
         <form action="{{url('update')}}" method="post" enctype="multipart/form-data">
             <table style="width:300px;" class="table table-hover">
                 <tr>

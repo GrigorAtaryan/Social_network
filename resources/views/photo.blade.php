@@ -42,7 +42,7 @@
                 type: "POST",
                 data: {id: $(this).val() },
                 success: function(out){
-                    console.log(out);
+                    window.location.href = '<?php  echo url('account') ?>';
                 }
             });
 

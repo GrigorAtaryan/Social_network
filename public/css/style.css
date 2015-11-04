@@ -82,13 +82,29 @@ a{
     border-bottom-color:transparent;
 
 }
-#div_msg{
+#div_settings{
     border:1px dashed #1b6d85;
-    width:300px;
+    width:800px;
+    margin:0px auto;
+    padding-top:20px"
+}
+#div_msg{
+
+    width:320px;
     border-top-color:transparent;
     display: none;
     margin:0px auto;
+    height:300px;
+}
+
+#history{
+    width:320px;
     height:200px;
+    border-top-color:transparent;
+    overflow-y: scroll;
+    padding:8px;
+    border: 0px solid;
+    border:1px dashed #1b6d85;
 }
 .zoom{
     width:80px;
@@ -100,17 +116,8 @@ a{
     transition: 1s ease ;
 
 }
-.zoom:hover{
-    width:200px;
-    height:200px;
-position: absolute;
 
-}
-#history{
-    width:300px;
-    height:200px;
-    border: 1px solid;
-}
+
 
 .from_msg{
 
