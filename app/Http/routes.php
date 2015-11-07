@@ -6,7 +6,8 @@ Route::post('login', 'UserController@login');
 Route::get('account', 'UserController@account');
 Route::get('logout', 'UserController@logout');
 Route::post('update', 'UserController@update');
-
+Route::post('search', 'UserController@search_user');
+Route::get('get_user/{id}', 'UserController@search_user_profile');
 
 Route::get('photo', 'ImageController@index');
 Route::post('upload', 'ImageController@store');
@@ -20,7 +21,7 @@ Route::get('confirm_request/{id}', 'FriendController@confirm_friend_request');
 
 Route::post('write_message', 'MessageController@create_message');
 Route::post('show_messages', 'MessageController@show_messages');
-Route::post('update_messages', 'MessageController@update_messages');
+Route::post('update_message', 'MessageController@update_messages');
 
 
 

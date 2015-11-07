@@ -2,22 +2,24 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-
     font-weight: bolder;
     font-family: 'Lato';
 }
 
 .container {
-    border: 0px solid dodgerblue;
+    border: 1px dashed #1b6d85;
+    border-top-color: transparent;
+    border-left-color:transparent;
+    border-right-color:transparent;
+    height: 600px;
+    border-bottom-color:#1b6d85;
     text-align: center;
-
 }
 
 .content {
     border:1px dashed #1b6d85;
     text-align: center;
     padding:5px;
-    border-top-color: transparent;
     display: inline-block;
 }
 
@@ -25,7 +27,6 @@ body {
     font-size: 50px;
     font-family: 'Lato';
     text-align: center;
-
     text-transform: uppercase;
     text-shadow: #2c2c2c 3px 3px 10px;
 }
@@ -61,21 +62,47 @@ a{
     border-bottom-color:#1b6d85;
 
 }
+#div_search{
+    border: 1px dashed #1b6d85;
+    height:300px;
+    margin:0px auto;
+
+}
+#div_photo{
+    border: 1px dashed #1b6d85;
+    width:800px;
+    height:400px;
+    margin:0px auto;
+    padding-top:30px;
+    overflow-y: scroll;
+}
+
 #div_all_users{
       float:right;
       border:1px dashed #1b6d85;
       border-top-color:transparent;
-    width:400px;
+      width:400px;
   }
 #div_profile{
     float:left;
     border:1px dashed #1b6d85;
+    width: 350px;
     border-top-color:transparent;
+    padding: 15px;
+}
+
+#div_users{
+    border:0px solid #1b6d85;
+    width:380px;
+    overflow-y: scroll;
+    height:150px;
 }
 
 #div_friends{
     border:1px dashed;
-    width:399px;
+    width:380px;
+    height:150px;
+    overflow-y: scroll;
     border-top-color:#1b6d85;
     border-left-color:transparent;
     border-right-color:transparent;
@@ -86,7 +113,7 @@ a{
     border:1px dashed #1b6d85;
     width:800px;
     margin:0px auto;
-    padding-top:20px"
+    padding-top:20px;
 }
 #div_msg{
 
@@ -95,6 +122,11 @@ a{
     display: none;
     margin:0px auto;
     height:300px;
+}
+
+#guest_img{
+    width: 150px;
+    height: 150px;
 }
 
 #history{
@@ -136,3 +168,75 @@ a{
     border-radius:3px;
     float:right;
 }
+
+.ul{
+    list-style: none;
+}
+
+.table_search{
+    border:1px solid;
+    margin: 0px auto;
+}
+
+.table_search tr:hover{
+    background-color: #0097cf;
+}
+.search_div{
+    color:royalblue;
+    border:0px solid;
+    padding: 2px;
+    position: absolute;
+    background-color: #0097cf;
+    margin-left: 60px;
+    border-radius: 10px;
+    padding-left: 70px;
+}
+
+.search_a{
+    font-family: 'FranchiseRegular', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    padding: 0px;
+    color:antiquewhite;
+    text-align: center;
+    display:block;
+}
+
+#dark #form_search input[type="text"] {
+
+    border: 0 none;
+    background-color: #0097cf;
+    font: bold 12px Arial,Helvetica,Sans-serif;
+    color: #ffffff;
+    width: 150px;
+    height:40px;
+    autocomplete:off;
+    padding: 6px 15px 6px 35px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 15px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+    -webkit-transition: all 0.7s ease 0s;
+    -moz-transition: all 0.7s ease 0s;
+    -o-transition: all 0.7s ease 0s;
+    transition: all 0.7s ease 0s;
+}
+
+#dark #form_search input[type="text"]:focus {
+    width: 200px;
+}
+
+
+#dark1{
+    border:0px solid;
+    width:300px;
+    margin:0px auto;
+}
+
+
+#dark1 span{
+    color:#800000;
+}
+

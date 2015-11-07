@@ -17,22 +17,14 @@ class User extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
+
     protected $table = 'users';
 
     public function friend_request()
     {
         return $this->hasMany('App\friend');
     }
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = ['firstname', 'lastname', 'email', 'password', 'remember_token'];
 
     protected $hidden = ['password', 'remember_token'];
@@ -44,6 +36,11 @@ class User extends Model implements AuthenticatableContract,
     public function get_user($id) {
         $result_users = \DB::table($this->table)->where('id', $id)->first();
         return $result_users;
+    }
+
+    public function search_users($search){
+        $result_search = \DB::table($this->table)->where('firstname', 'like', "%" . $search . "%")->OrWhere('lastname', 'like', "%" . $search . "%")->get();
+        return  $result_search;
     }
 
 

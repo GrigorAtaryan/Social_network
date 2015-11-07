@@ -10,6 +10,8 @@ class Image extends Model
    protected $table = 'images';
    protected $fillable = ['user_id', 'path', 'feauture' ];
 
+
+
     public function get_user_images(){
         $user_photos = \DB::table($this->table)->where('user_id', Auth::User()->id)->get();
         return($user_photos);
@@ -29,6 +31,11 @@ class Image extends Model
         \DB::table($this->table)->where('id', $id)->delete();
     }
 
+
+    public function get_search_user_images($search_id){
+        $user_photos = \DB::table($this->table)->where('user_id', $search_id)->get();
+        return($user_photos);
+    }
 
 
 }

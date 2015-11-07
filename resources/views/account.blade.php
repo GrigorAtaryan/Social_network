@@ -1,4 +1,5 @@
 @include('header')
+
 <div id="middle"><br/><br/>
 
     <div id="div_profile">
@@ -6,7 +7,7 @@
         <span class="span">{{  $user_data->firstname }}</span> &nbsp;
         <span class="span">{{  $user_data->lastname }}</span><br/>
         @foreach($image as $feature)
-            <img   class="img-circle" width="150" height="150" src="images/{{ $feature->path  }}"/>
+            <img   class="img-rounded" width="150" height="150" src="images/{{ $feature->path  }}"/>
         @endforeach
         <div style="border:0px solid; width:350px;">
 
@@ -25,11 +26,10 @@
             <?php } ?>
         </div>
     </div>
-
-
     <div id="div_all_users">
         <div class="title_profile"><code>Users</code></div>
-        <table class="table table-hover">
+        <div id="div_users">
+        <table  class="table table-hover">
 
             <?php
             $users = App\User::all();
@@ -43,8 +43,7 @@
             <tr>
                 <td><span class="span">{{  $users_list->firstname }}</span></td>
                 <td><span class="span">{{  $users_list->lastname }}</span></td>
-                <td><img class="friend_request" id="{{$users_list->id}}" width="30" height="30" src="images/add.png"/>
-                </td>
+                <td><img class="friend_request" id="{{$users_list->id}}" width="30" height="30" src="images/add.png"/></td>
             </tr>
             <?php
             }
@@ -52,15 +51,17 @@
             ?>
             </tr>
         </table>
+
+        </div>
         <div id="div_friends">
+            <div class="title_profile"><code>Friends</code></div>
             <?php if(!empty($all_friends)){ ?>
-            <span class="title_profile"><code>Friends</code></span><br />
-            <table style="width:380px " class="table-bordered">
+            <table class="table table-hover">
                 @foreach($all_friends as $friends)
                     <tr>
                         <td><span class="span"> <?php echo $friends->firstname ?></span></td>
                         <td><span class="span"> <?php echo $friends->lastname ?></span></td>
-                        <td><span class="new_msg_<?php echo $friends->id ?>" style="display: none;">+1</span><img class='message' id="<?php echo $friends->id ?>" width="30" height="30" src="images/msg.png"/></td>
+                        <td><span  class="new_msg_<?php echo $friends->id ?>" style="display: none;">+1</span><img style="cursor:pointer" class='message' id="<?php echo $friends->id ?>" width="30" height="30" src="images/msg.png"/></td>
                     </tr>
                 @endforeach
             </table>

@@ -1,3 +1,4 @@
+
 // friend request
 $(document).on("click", ".friend_request", function(e){
     var friendId = e.target.id;
@@ -14,45 +15,53 @@ $(document).on("click", ".friend_request", function(e){
 });
 
 
-//  friend messages
+//  Update messages status
 $(document).ready(function(){
     function update_msg_status(){
+        var url_update_msg_status = "/update_message";
+        var to_id = $('.message').attr('id');
 
-        var friend_id = $('.message').attr('id');
-        var user_id = $('#user_id').val();
         $.ajax({
+            url: url_update_msg_status,
             type: "POST",
-            url: '<?php echo URL ?>user/update_messages',
-            data: {friends_id: friend_id},
+            data: {to_id: to_id},
             dataType: "json",
             success:function(out){
-                $.each(out, function(index, from_user_id){
-                    $(".new_msg_"+from_user_id.from_id).show();
+
+                $.each(out, function(index, to_id){
+                    $(".new_msg_"+to_id.from_id).show();
                 });
             }
         });
 
     }
 
+    setInterval(update_msg_status, 1000);
 
     // Show Messages
     $('.message').on('click', function(){
+
         var url_show_msg = "/show_messages";
         $.ajax({
             url: url_show_msg,
             type: "POST",
             data: {id: this.id},
             success: function(out){
+                console.log(out);
 
-                message_view(out);
+                message_view(out,'oldMsg');
+
 
             }
         })
-        var html = "<a id='close' href='#'>X</a><div  id='history'></div>";
+
+        var from_id = $('#from_id').val();
+        var html = "";
+        html += "<a id='close' href='#'>X</a><div  id='history'></div>";
         html += "<br /><br /><input type='text' id='text' placeholder='New message' />";
         html += "<input  id='hidden' type='hidden' value='"+this.id+"'/> &nbsp ";
-        html += "<input type='file'  name='msg_file' />&nbsp ";
         html += "<input type='submit' value='Send' id='send' class='btn btn-primary'/>";
+
 
 
         $('#div_msg').append(html).show('fast');
@@ -78,7 +87,9 @@ $(document).ready(function(){
             data: {id: friend_id, msg_text: text},
             dataType: "json",
             success:function(){
-                window.location.reload();
+                 var  massage = $('#text').val();
+                message_view(massage,'newMsg');
+                //window.location.reload();
             }
         });
 
@@ -86,21 +97,26 @@ $(document).ready(function(){
     });
 
     // View Messages
-    function message_view(message){
-        console.log(message);
-        var from_id = $('#from_id').val();
-        $.each(message, function(index, value){
-            var xclass = '';
-            if(from_id == value.from_id){
-                xclass ='from_msg';
+    function message_view(message, check) {
 
-            } else{
-                xclass = 'to_msg';
+        if(check =="oldMsg"){
+            var from_id = $('#from_id').val();
+            $.each(message, function (index, value) {
+                var xclass = '';
+                if (from_id == value.from_id) {
+                    xclass = 'from_msg';
 
-            }
-            var msg = "<span class=" + xclass + ">" + value.message_text + "</span>";
+                } else {
+                    xclass = 'to_msg';
+
+                }
+                var msg = "<span class=" + xclass + ">" + value.message_text + "</span>";
+                $('#history').append(msg).append("<br /> <br />");
+            });
+        }else if(check =="newMsg"){
+            var msg = "<span class='from_msg'>" + message + "</span>";
             $('#history').append(msg).append("<br /> <br />");
-        });
+        }
     }
 
 

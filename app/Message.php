@@ -28,6 +28,7 @@ class Message extends Model
     public function get_new_messages($from_id){
         $result = \DB::table($this->table)->where(array('to_id' => $from_id, 'is_read' => 0 ))->get();
         return $result;
+//    }
     }
 
     public function read_msg($message_id){

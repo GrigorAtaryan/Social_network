@@ -2,7 +2,7 @@
 @include('header')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<div style="border:1px solid; width:800px; height:500px; margin:0px auto; padding-top:100px">
+<div id="div_photo">
     <form action="{{url('upload')}}" method="post" enctype="multipart/form-data">
 <table style="width:400px; margin:0px auto" class="table table-bordered">
     <tr>

@@ -26,8 +26,6 @@ class UserController extends Controller
         return View('log_reg');
     }
 
-
-
     public function create(Request $request)
     {
 
@@ -66,7 +64,6 @@ class UserController extends Controller
             return redirect('/')->with('message', 'Succesfully Registered');
         }
     }
-
 
     public function account(){
 
@@ -107,7 +104,6 @@ class UserController extends Controller
 
           }
 
-
     public function login(Request $request)
     {
 
@@ -132,15 +128,6 @@ class UserController extends Controller
 
         }
     }
-
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
 
     public function update(Request $request)
     {
@@ -167,6 +154,21 @@ class UserController extends Controller
 
     }
 
+    public function search_user()
+    {
+        $search_result = $_POST['search'];
+        $user = new User();
+        return  $result = $user->search_users($search_result);
+
+    }
+
+    public function search_user_profile($user_id){
+        $user = new User();
+        $image = new Image();
+        $result_search_user = $user->get_user($user_id);
+        $result_search_images = $image->get_search_user_images($user_id);
+        return view('search')->with(array('search_user' => $result_search_user, 'search_images' => $result_search_images));
+    }
 
     public function logout()
     {
